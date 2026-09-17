@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Balise — Sites vitrines pour entreprises locales</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1B2A38;
+    --paper: #EDEEE6;
+    --paper-soft: #F5F5F0;
+    --teal: #1B7A4D;
+    --tan: #B23A2E;
+    --tan-deep: #8C2A21;
+    --charcoal: #20242A;
+    --line: rgba(27,42,56,0.14);
+    --line-soft: rgba(27,42,56,0.08);
+    --max-w: 1120px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--charcoal);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Spectral', serif;
+    color: var(--ink);
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ---------- Header ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(245,245,240,0.62);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+    box-shadow: 0 1px 24px rgba(27,42,56,0.05);
+  }
+  header .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+  .wordmark {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  .logo-img {
+    height: 60px;
+    width: auto;
+    display: block;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 12px 24px;
+    min-height: 44px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--paper-soft);
+  }
+  .btn-primary:hover { background: var(--teal); }
+  .btn:focus-visible {
+    outline: 2px solid var(--tan-deep);
+    outline-offset: 2px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 88px 0 96px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(70px);
+    z-index: 0;
+    pointer-events: none;
+  }
+  .hero-blob-1 {
+    width: 420px;
+    height: 420px;
+    top: -140px;
+    right: 8%;
+    background: radial-gradient(circle, rgba(178,58,46,0.28), transparent 70%);
+  }
+  .hero-blob-2 {
+    width: 360px;
+    height: 360px;
+    bottom: -160px;
+    left: 4%;
+    background: radial-gradient(circle, rgba(27,122,77,0.22), transparent 70%);
+  }
+  .hero .wrap {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .hero-copy {
+    opacity: 0;
+    transform: translateY(14px);
+    animation: rise 0.7s ease-out forwards;
+  }
+  .hero-visual {
+    opacity: 0;
+    animation: fadeIn 1s ease-out 0.3s forwards;
+  }
+  @keyframes rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+  .hero h1 {
+    font-size: 42px;
+    line-height: 1.18;
+    max-width: 15ch;
+  }
+  .hero p.lede {
+    margin-top: 22px;
+    font-size: 18px;
+    max-width: 46ch;
+    color: var(--charcoal);
+  }
+  .hero .actions {
+    margin-top: 34px;
+    display: flex;
+    gap: 16px;
+  }
+  .btn-ghost {
+    padding: 12px 4px;
+    min-height: 44px;
+    color: var(--ink);
+    border-bottom: 1px solid var(--ink);
+    border-radius: 0;
+  }
+  .btn-ghost:hover { color: var(--teal); border-color: var(--teal); }
+
+  .reassurance-list {
+    list-style: none;
+    margin: 18px 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+  }
+  .reassurance-list li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--charcoal);
+  }
+  .reassurance-list .check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--teal);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .radius-map { width: 100%; height: auto; }
+  .radius-map text { font-family: 'Work Sans', sans-serif; }
+
+  .hero-photo-frame {
+    position: relative;
+    border-radius: 8px;
+    overflow: visible;
+  }
+  .hero-photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 24px 48px -20px rgba(27,42,56,0.35);
+  }
+  .hero-badge {
+    position: absolute;
+    left: -22px;
+    bottom: -22px;
+    background: rgba(245,245,240,0.55);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 16px 32px -14px rgba(27,42,56,0.25);
+    max-width: 200px;
+  }
+  .hero-badge svg { flex-shrink: 0; }
+  .hero-badge span {
+    font-size: 13px;
+    line-height: 1.35;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ---------- Sections generic ---------- */
+  section { padding: 84px 0; }
+  .section-label {
+    font-size: 15px;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  h2.section-title {
+    font-size: 30px;
+    max-width: 22ch;
+  }
+
+  /* ---------- Qui suis-je ---------- */
+  .quisuisje { border-top: 1px solid var(--line); }
+
+  /* ---------- Problème ---------- */
+  .probleme { border-top: 1px solid var(--line); }
+  .probleme-grid {
+    margin-top: 32px;
+  }
+  .probleme-grid > p {
+    max-width: 60ch;
+  }
+  .probleme-list {
+    border-top: 1px solid var(--line);
+    margin-top: 32px;
+    max-width: 680px;
+  }
+  .probleme-item {
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    gap: 20px;
+  }
+  .probleme-item .mark {
+    color: var(--tan-deep);
+    font-family: 'Spectral', serif;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+  .probleme-item p { margin: 0; }
+  .probleme-item strong { display: block; color: var(--ink); margin-bottom: 4px; }
+
+  /* ---------- Méthode ---------- */
+  .methode { background: var(--ink); color: var(--paper-soft); }
+  .methode h2 { color: var(--paper-soft); }
+  .methode .section-label { color: var(--tan); }
+  .steps {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .step {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 28px;
+    padding: 30px 0;
+    border-top: 1px solid rgba(245,245,240,0.14);
+    position: relative;
+  }
+  .step:last-child { border-bottom: 1px solid rgba(245,245,240,0.14); }
+  .step .num {
+    font-family: 'Spectral', serif;
+    font-size: 34px;
+    color: var(--tan);
+    font-weight: 600;
+  }
+  .step h3 { color: var(--paper-soft); font-size: 20px; margin-bottom: 8px; }
+  .step p { margin: 0; color: rgba(245,245,240,0.82); max-width: 56ch; }
+
+  /* ---------- Engagements ---------- */
+  .engagements {
+    border-top: 1px solid var(--line);
+    background: var(--paper-soft);
+    position: relative;
+    overflow: hidden;
+  }
+  .engagements-blob {
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    filter: blur(80px);
+    top: -120px;
+    right: 6%;
+    background: radial-gradient(circle, rgba(27,122,77,0.20), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .engagements .wrap { position: relative; z-index: 1; }
+  .engagements-list {
+    list-style: none;
+    margin: 40px 0 0;
+    padding: 8px 28px;
+    max-width: 640px;
+    background: rgba(255,255,255,0.5);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 14px;
+    box-shadow: 0 20px 40px -24px rgba(27,42,56,0.18);
+  }
+  .engagements-list li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(27,42,56,0.08);
+    font-size: 16px;
+    color: var(--charcoal);
+  }
+  .engagements-list li:last-child { border-bottom: none; }
+  .engagements-list .check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--teal);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* ---------- Tarifs ---------- */
+  .tarifs { position: relative; overflow: hidden; }
+  .tarifs-blob {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    filter: blur(85px);
+    bottom: -160px;
+    left: 2%;
+    background: radial-gradient(circle, rgba(178,58,46,0.22), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .tarifs .wrap { position: relative; z-index: 1; }
+  .tarifs-intro { max-width: 60ch; margin-top: 16px; color: var(--charcoal); }
+  .price-block {
+    margin-top: 44px;
+    max-width: 560px;
+    padding: 8px 28px 26px;
+    background: rgba(255,255,255,0.5);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 14px;
+    box-shadow: 0 20px 40px -24px rgba(27,42,56,0.18);
+  }
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 22px 0;
+    border-bottom: 1px solid rgba(27,42,56,0.08);
+  }
+  .price-label { color: var(--teal); font-weight: 500; font-size: 16px; }
+  .price-value {
+    font-family: 'Spectral', serif;
+    font-size: 26px;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .price-unit { font-size: 15px; font-weight: 400; color: var(--teal); }
+  .price-tranquillite { padding-top: 20px; }
+  .price-tranquillite-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 16px;
+  }
+  .price-tranquillite-head span:first-child {
+    font-family: 'Spectral', serif;
+    font-size: 17px;
+    color: var(--ink);
+    max-width: 22ch;
+  }
+  .inclus-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 18px;
+  }
+  .inclus-list li {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 14px;
+    color: var(--charcoal);
+  }
+  .inclus-list .check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--teal);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .parrainage-note {
+    margin-top: 28px;
+    padding: 20px 24px;
+    background: var(--paper-soft);
+    border-left: 3px solid var(--tan);
+    max-width: 62ch;
+  }
+  .parrainage-note p { margin: 0; }
+
+  /* ---------- Exemple ---------- */
+  .exemple { border-top: 1px solid var(--line); }
+  .browser-frame {
+    margin-top: 40px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--paper-soft);
+  }
+  .browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: #E4E4DC;
+    border-bottom: 1px solid var(--line);
+  }
+  .browser-bar .dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(27,42,56,0.25); }
+  .browser-bar .url {
+    margin-left: 12px;
+    font-size: 13px;
+    color: var(--teal);
+    font-family: 'Work Sans', sans-serif;
+  }
+  .browser-body {
+    padding: 0;
+  }
+  .browser-shot {
+    display: block;
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+  }
+  .browser-frame a:hover .browser-shot { opacity: 0.9; }
+  .browser-body .block { background: rgba(27,42,56,0.06); border-radius: 4px; }
+  .browser-body .b1 { height: 18px; width: 60%; background: var(--ink); opacity: 0.85; }
+  .browser-body .b2 { height: 10px; width: 85%; margin-top: 12px; }
+  .browser-body .b3 { height: 10px; width: 70%; margin-top: 8px; }
+  .browser-body .card { height: 120px; }
+  .browser-body .col { display: flex; flex-direction: column; }
+  .exemple-caption {
+    margin-top: 20px;
+    font-size: 15px;
+    color: var(--teal);
+  }
+  .avant-apres-grid {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  .avant-apres-frame {
+    width: 100%;
+    height: 340px;
+    border: none;
+    display: block;
+    pointer-events: none;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact { background: var(--paper-soft); border-top: 1px solid var(--line); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 64px;
+    margin-top: 40px;
+    align-items: start;
+  }
+  .contact p.lede { max-width: 42ch; }
+  form { display: flex; flex-direction: column; gap: 16px; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label { font-size: 14px; color: var(--teal); font-weight: 500; }
+  .field input, .field textarea {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    padding: 11px 14px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    background: var(--paper);
+    color: var(--charcoal);
+  }
+  .field input:focus-visible, .field textarea:focus-visible {
+    outline: 2px solid var(--tan-deep);
+    outline-offset: 1px;
+  }
+  .field textarea { resize: vertical; min-height: 90px; }
+  .submit-row { margin-top: 6px; }
+  button.btn-primary { border: none; cursor: pointer; font-size: 15px; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    padding: 32px 0;
+    border-top: 1px solid var(--line);
+  }
+  footer .wrap {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: var(--teal);
+  }
+
+  @media (max-width: 860px) {
+    .hero .wrap { grid-template-columns: 1fr; }
+    .hero-visual { order: -1; max-width: 340px; margin: 0 auto 20px; }
+    .hero-badge { left: 8px; bottom: -16px; max-width: 160px; padding: 10px 12px; }
+    .probleme-list { max-width: none; }
+    .avant-apres-grid { grid-template-columns: 1fr; }
+    .inclus-list { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .browser-body { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 32px; max-width: none; }
+    section { padding: 60px 0; }
+    footer .wrap { flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="wordmark" href="#top"><img src="logo-balise-small.png" alt="La Balise" class="logo-img"></a>
+    <a class="btn btn-primary" href="#contact">Demander ma maquette gratuite</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="wrap">
+      <div class="hero-copy">
+        <h1>Votre site web, sans les tracas d'une grande agence.</h1>
+        <p class="lede">Création de votre site vitrine clé en main à partir de 149€ + abonnement mensuel tout inclus (hébergement, maintenance, une modification par mois), sans aucun engagement.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#contact">Recevoir ma maquette gratuite</a>
+          <a class="btn btn-ghost" href="#tarifs">Voir les tarifs</a>
+        </div>
+        <ul class="reassurance-list">
+          <li><span class="check">✓</span> Maquette personnalisée sous 48h</li>
+          <li><span class="check">✓</span> Réponse sous 24h</li>
+          <li><span class="check">✓</span> Sans carte bancaire ni engagement</li>
+        </ul>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-photo-frame">
+          <img class="hero-photo" src="hero.webp" alt="David Heurtebise à son poste de travail" width="440" height="480" fetchpriority="high">
+          <div class="hero-badge">
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+              <circle cx="17" cy="17" r="15" stroke="#B23A2E" stroke-width="1.4" stroke-dasharray="3 5"/>
+              <circle cx="17" cy="17" r="3" fill="#B23A2E"/>
+            </svg>
+            <span>30 km autour de<br>Pleslin-Trigavou</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUI SUIS-JE -->
+  <section class="quisuisje" id="quisuisje">
+    <div class="wrap">
+      <div class="section-label">Qui suis-je</div>
+      <h2 class="section-title">David Heurtebise.</h2>
+      <p style="margin-top: 16px; max-width: 60ch; font-size: 17px;">Je crée des sites web depuis 17 ans — d'abord en Flash (aujourd'hui disparu), puis en HTML, puis avec WordPress — pour des professions aussi variées que des professions libérales ou des artistes comme des photographes. Ce que j'aime, c'est construire des outils simples qui simplifient vraiment le quotidien de ceux qui les utilisent. Les sites vitrines pour les commerces et artisans d'ici, c'est cette même démarche appliquée à votre activité.</p>
+    </div>
+  </section>
+
+  <!-- PROBLÈME -->
+  <section class="probleme" id="probleme">
+    <div class="wrap">
+      <div class="section-label">Le constat</div>
+      <h2 class="section-title">Votre site a été fait il y a 10 ans. Vos clients aussi le remarquent.</h2>
+      <div class="probleme-grid">
+        <p style="color: var(--charcoal); font-size: 17px; max-width: 46ch;">Un site qui ne s'affiche pas bien sur mobile, une photo floue en page d'accueil, des horaires qui ne sont plus à jour... Ce sont souvent les premières impressions que vos clients potentiels retiennent — avant même de vous appeler.</p>
+        <div class="probleme-list">
+          <div class="probleme-item">
+            <span class="mark">—</span>
+            <p><strong>Illisible sur mobile</strong>Plus de 6 visiteurs sur 10 arrivent depuis leur téléphone.</p>
+          </div>
+          <div class="probleme-item">
+            <span class="mark">—</span>
+            <p><strong>Informations dépassées</strong>Horaires, tarifs ou services qui ne correspondent plus à la réalité.</p>
+          </div>
+          <div class="probleme-item">
+            <span class="mark">—</span>
+            <p><strong>Personne à contacter</strong>Un formulaire qui ne mène nulle part, ou une agence injoignable.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÉTHODE -->
+  <section class="methode" id="methode">
+    <div class="wrap">
+      <div class="section-label">La méthode</div>
+      <h2 class="section-title">Trois étapes, aucune surprise.</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <div>
+            <h3>J'analyse votre site actuel</h3>
+            <p>Gratuitement, sans engagement. Je regarde ce qui fonctionne, ce qui date, et ce qui freine vos visiteurs.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <div>
+            <h3>Je vous montre une version modernisée</h3>
+            <p>Un aperçu concret de ce que pourrait être votre nouveau site, avant que vous ne payiez quoi que ce soit.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <div>
+            <h3>Si ça vous plaît, on avance ensemble</h3>
+            <p>Création à tarif fixe, puis hébergement et suivi mensuel, sans mauvaise surprise.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXEMPLE -->
+  <section class="exemple" id="exemple">
+    <div class="wrap">
+      <div class="section-label">Un exemple concret</div>
+      <h2 class="section-title">Pas une promesse en l'air.</h2>
+      <p style="margin-top: 16px; max-width: 60ch;">Ce site vitrine a été créé pour promouvoir les bureaux à louer d'une maison de santé à Saint-Père. Même approche, même niveau de finition : c'est ce que vous pouvez obtenir pour votre entreprise.</p>
+
+      <div class="browser-frame">
+        <div class="browser-bar">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="url">maisondesante-saintpere.fr</span>
+        </div>
+        <a href="https://maisondesante-saintpere.fr" target="_blank" rel="noopener" aria-label="Voir le site maisondesante-saintpere.fr (nouvel onglet)">
+          <img class="browser-shot" src="maison-sante-hq.jpg" alt="Aperçu du site maisondesante-saintpere.fr">
+        </a>
+      </div>
+      <p class="exemple-caption">→ maisondesante-saintpere.fr</p>
+
+      <p style="margin-top: 48px; max-width: 60ch;">Autre cas de figure : un commerce qui a déjà un site, mais daté. Voici une comparaison réelle — un ancien site typique à gauche, une version modernisée avec système de réservation en ligne à droite (exemple fictif, pizzeria itinérante).</p>
+
+      <div class="avant-apres-grid">
+        <div>
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="url">avant</span>
+            </div>
+            <a href="https://pizza-du-port-demo-i1jzu9w2f-heurtebises-projects.vercel.app/avant.html" target="_blank" rel="noopener">
+              <iframe src="https://pizza-du-port-demo-i1jzu9w2f-heurtebises-projects.vercel.app/avant.html" class="avant-apres-frame" loading="lazy" title="Site avant"></iframe>
+            </a>
+          </div>
+          <p class="exemple-caption">Avant — site non retouché depuis des années</p>
+        </div>
+        <div>
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="url">après</span>
+            </div>
+            <a href="https://pizza-du-port-demo-i1jzu9w2f-heurtebises-projects.vercel.app/apres.html" target="_blank" rel="noopener">
+              <iframe src="https://pizza-du-port-demo-i1jzu9w2f-heurtebises-projects.vercel.app/apres.html" class="avant-apres-frame" loading="lazy" title="Site après"></iframe>
+            </a>
+          </div>
+          <p class="exemple-caption">Après — identité propre + réservation en ligne</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENGAGEMENTS -->
+  <section class="engagements" id="engagements">
+    <div class="engagements-blob"></div>
+    <div class="wrap">
+      <div class="section-label">Mes engagements</div>
+      <h2 class="section-title">Pas encore d'avis clients affichés — mais des engagements clairs, dès le premier jour.</h2>
+      <ul class="engagements-list">
+        <li><span class="check">✓</span> Un seul interlocuteur, du premier échange à la maintenance</li>
+        <li><span class="check">✓</span> Modifications traitées sous 24h, par SMS ou email</li>
+        <li><span class="check">✓</span> Aucun engagement de durée — vous partez quand vous voulez</li>
+        <li><span class="check">✓</span> Tarif annoncé dès le départ, sans frais cachés</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TARIFS -->
+  <section class="tarifs" id="tarifs">
+    <div class="tarifs-blob"></div>
+    <div class="wrap">
+      <div class="section-label">Les tarifs</div>
+      <h2 class="section-title">Des tarifs pensés pour les petites entreprises, pas pour les grands comptes.</h2>
+      <p class="tarifs-intro">Un tarif de création unique, puis un abonnement simple qui couvre l'hébergement et le suivi de votre site. Une seule formule, pensée pour ne pas avoir à choisir.</p>
+
+      <div class="price-block">
+        <div class="price-row">
+          <span class="price-label">Création du site</span>
+          <span class="price-value">149 €</span>
+        </div>
+        <div class="price-tranquillite">
+          <div class="price-tranquillite-head">
+            <span>Votre site, sans avoir à vous en occuper</span>
+            <span class="price-value">100 €<span class="price-unit">/mois</span></span>
+          </div>
+          <ul class="inclus-list">
+            <li><span class="check">✓</span> Hébergement</li>
+            <li><span class="check">✓</span> Nom de domaine</li>
+            <li><span class="check">✓</span> Adresse email professionnelle</li>
+            <li><span class="check">✓</span> Maintenance technique et mises à jour</li>
+            <li><span class="check">✓</span> Sauvegardes régulières</li>
+            <li><span class="check">✓</span> 1 modification de contenu par mois</li>
+            <li><span class="check">✓</span> Assistance directe, réponse sous 24h</li>
+            <li><span class="check">✓</span> Structure optimisée pour le référencement de base</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="parrainage-note">
+        <p>Recommandez une entreprise qui devient cliente : <strong>-5% cumulable</strong> sur votre forfait mensuel, jusqu'à -50%, tant que votre filleul reste client.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="section-label">Contact</div>
+      <h2 class="section-title">Votre analyse gratuite vous attend.</h2>
+      <div class="contact-grid">
+        <p class="lede">Envoyez-moi l'adresse de votre site actuel (ou dites-moi que vous n'en avez pas encore) — je reviens vers vous avec un premier aperçu, sans engagement de votre part.</p>
+        <form onsubmit="return false;">
+          <div class="field">
+            <label for="nom">Votre nom &amp; prénom</label>
+            <input id="nom" type="text" name="nom" required placeholder="ex. Jean Dupont">
+          </div>
+          <div class="field">
+            <label for="entreprise">Nom de votre entreprise / activité</label>
+            <input id="entreprise" type="text" name="entreprise" required placeholder="ex. Menuiserie Dupont à Dinan">
+          </div>
+          <div class="field">
+            <label for="contact-info">Email ou téléphone</label>
+            <input id="contact-info" type="text" name="contact-info" required placeholder="Pour vous envoyer la maquette">
+          </div>
+          <div class="field">
+            <label for="site">Avez-vous déjà un site web actuellement ? (optionnel)</label>
+            <input id="site" type="url" name="site" placeholder="www.votre-site-actuel.fr">
+          </div>
+          <div class="submit-row">
+            <label style="display:flex; align-items:flex-start; gap:8px; font-size:14px; color: var(--teal); margin-bottom: 16px;">
+              <input type="checkbox" required style="margin-top:3px;">
+              <span>J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la <a href="politique-confidentialite.html" style="color: var(--teal);">politique de confidentialité</a>.</span>
+            </label>
+            <button class="btn btn-primary" type="submit">Recevoir ma maquette gratuite sous 48h →</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>La Balise</span>
+    <span>Pleslin-Trigavou · 30 km alentour</span>
+    <span><a href="mentions-legales.html" style="color: var(--teal);">Mentions légales</a> · <a href="politique-confidentialite.html" style="color: var(--teal);">Confidentialité</a></span>
+  </div>
+</footer>
+
+<script>
+  // Reveal orchestré au scroll : chaque section apparaît une fois, avec un
+  // décalage progressif entre ses éléments internes (pas un fade générique
+  // identique partout — l'ordre suit la lecture naturelle de chaque bloc).
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+    var revealGroups = [
+      { selector: '.probleme-item', stagger: 90 },
+      { selector: '.step', stagger: 110 },
+      { selector: '.engagements-list li', stagger: 90 },
+      { selector: '.price-row', stagger: 90 },
+      { selector: '.browser-frame', stagger: 0 },
+      { selector: '.contact-grid > *', stagger: 100 }
+    ];
+
+    revealGroups.forEach(function (group) {
+      var els = document.querySelectorAll(group.selector);
+      els.forEach(function (el, i) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(16px)';
+        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        el.style.transitionDelay = (i * group.stagger) + 'ms';
+      });
+    });
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
+
+    revealGroups.forEach(function (group) {
+      document.querySelectorAll(group.selector).forEach(function (el) {
+        observer.observe(el);
+      });
+    });
+  }
+</script>
+
+</body>
+</html>
