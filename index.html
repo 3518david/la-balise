@@ -631,8 +631,8 @@
           <a class="btn btn-ghost" href="#tarifs">Voir les tarifs</a>
         </div>
         <ul class="reassurance-list">
-          <li><span class="check">✓</span> Maquette personnalisée sous 48h</li>
-          <li><span class="check">✓</span> Réponse sous 24h</li>
+          <li><span class="check">✓</span> Maquette personnalisée sous 7 jours ouvrés</li>
+          <li><span class="check">✓</span> Réponse sous 48h</li>
           <li><span class="check">✓</span> Sans carte bancaire ni engagement</li>
         </ul>
       </div>
@@ -773,7 +773,7 @@
       <h2 class="section-title">Pas encore d'avis clients affichés — mais des engagements clairs, dès le premier jour.</h2>
       <ul class="engagements-list">
         <li><span class="check">✓</span> Un seul interlocuteur, du premier échange à la maintenance</li>
-        <li><span class="check">✓</span> Modifications traitées sous 24h, par SMS ou email</li>
+        <li><span class="check">✓</span> Modifications traitées sous 7 jours ouvrés, par SMS ou email</li>
         <li><span class="check">✓</span> Aucun engagement de durée — vous partez quand vous voulez</li>
         <li><span class="check">✓</span> Tarif annoncé dès le départ, sans frais cachés</li>
       </ul>
@@ -805,7 +805,7 @@
             <li><span class="check">✓</span> Maintenance technique et mises à jour</li>
             <li><span class="check">✓</span> Sauvegardes régulières</li>
             <li><span class="check">✓</span> 1h de modification de contenu par mois</li>
-            <li><span class="check">✓</span> Assistance directe, réponse sous 24h</li>
+            <li><span class="check">✓</span> Assistance directe, réponse sous 48h</li>
             <li><span class="check">✓</span> Structure optimisée pour le référencement de base</li>
           </ul>
           <p style="font-size:13px; color: var(--charcoal); opacity:0.75; margin-top:14px; margin-bottom:0;">La modification mensuelle correspond à environ 1h de mon temps (texte, photos, tarifs, horaires...) — hors coût d'éventuels outils ou services tiers nécessaires.</p>
@@ -854,7 +854,7 @@
               <input type="checkbox" required style="margin-top:3px;">
               <span>J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la <a href="politique-confidentialite.html" style="color: var(--teal);">politique de confidentialité</a>.</span>
             </label>
-            <button class="btn btn-primary" type="submit">Recevoir ma maquette gratuite sous 48h →</button>
+            <button class="btn btn-primary" type="submit">Recevoir ma maquette gratuite sous 7 jours ouvrés →</button>
             <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
           </div>
         </form>
@@ -938,7 +938,7 @@
         .then(function (result) {
           if (result.success) {
             statusEl.className = 'form-status is-success';
-            statusEl.textContent = 'Merci ! Votre demande a bien été envoyée, je reviens vers vous sous 48h.';
+            statusEl.textContent = 'Merci ! Votre demande a bien été envoyée, je reviens vers vous sous 7 jours ouvrés.';
             contactForm.reset();
           } else {
             statusEl.className = 'form-status is-error';
