@@ -93,12 +93,13 @@
     display: flex;
     align-items: center;
     text-decoration: none;
+    color: var(--ink);
+    font-family: 'Spectral', serif;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
   }
-  .logo-img {
-    height: 60px;
-    width: auto;
-    display: block;
-  }
+  .wordmark .dot { color: var(--teal); }
   .btn {
     display: inline-flex;
     align-items: center;
@@ -611,7 +612,7 @@
 
 <header>
   <div class="wrap">
-    <a class="wordmark" href="#top"><img src="logo-balise-small.png" alt="La Balise" class="logo-img"></a>
+    <a class="wordmark" href="#top">La Balise<span class="dot">.</span></a>
     <a class="btn btn-primary" href="#contact">Demander ma maquette gratuite</a>
   </div>
 </header>
