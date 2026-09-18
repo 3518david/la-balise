@@ -561,6 +561,10 @@
   .field textarea { resize: vertical; min-height: 90px; }
   .submit-row { margin-top: 6px; }
   button.btn-primary { border: none; cursor: pointer; font-size: 15px; }
+  button.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+  .form-status { margin-top: 14px; font-size: 14px; display: none; }
+  .form-status.is-success { display: block; color: var(--teal); }
+  .form-status.is-error { display: block; color: var(--tan-deep); }
 
   /* ---------- Footer ---------- */
   footer {
@@ -806,7 +810,10 @@
       <h2 class="section-title">Votre analyse gratuite vous attend.</h2>
       <div class="contact-grid">
         <p class="lede">Envoyez-moi l'adresse de votre site actuel (ou dites-moi que vous n'en avez pas encore) — je reviens vers vous avec un premier aperçu, sans engagement de votre part.</p>
-        <form onsubmit="return false;">
+        <form id="contact-form">
+          <input type="hidden" name="access_key" value="8cc627ec-284a-415f-9381-a3b78fbc1eec">
+          <input type="hidden" name="subject" value="Nouvelle demande de maquette — La Balise">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
           <div class="field">
             <label for="nom">Votre nom &amp; prénom</label>
             <input id="nom" type="text" name="nom" required placeholder="ex. Jean Dupont">
@@ -829,6 +836,7 @@
               <span>J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la <a href="politique-confidentialite.html" style="color: var(--teal);">politique de confidentialité</a>.</span>
             </label>
             <button class="btn btn-primary" type="submit">Recevoir ma maquette gratuite sous 48h →</button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
           </div>
         </form>
       </div>
@@ -885,6 +893,46 @@
       document.querySelectorAll(group.selector).forEach(function (el) {
         observer.observe(el);
       });
+    });
+  }
+
+  // Envoi du formulaire de contact via Web3Forms (pas de backend à maintenir).
+  var contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    var statusEl = document.getElementById('form-status');
+    var submitBtn = contactForm.querySelector('button[type="submit"]');
+
+    contactForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      submitBtn.disabled = true;
+      statusEl.className = 'form-status';
+      statusEl.textContent = 'Envoi en cours…';
+      statusEl.style.display = 'block';
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(contactForm)
+      })
+        .then(function (response) { return response.json(); })
+        .then(function (result) {
+          if (result.success) {
+            statusEl.className = 'form-status is-success';
+            statusEl.textContent = 'Merci ! Votre demande a bien été envoyée, je reviens vers vous sous 48h.';
+            contactForm.reset();
+          } else {
+            statusEl.className = 'form-status is-error';
+            statusEl.textContent = 'Une erreur est survenue lors de l\'envoi. Réessayez ou contactez-moi directement.';
+          }
+        })
+        .catch(function () {
+          statusEl.className = 'form-status is-error';
+          statusEl.textContent = 'Une erreur est survenue lors de l\'envoi. Réessayez ou contactez-moi directement.';
+        })
+        .finally(function () {
+          submitBtn.disabled = false;
+        });
     });
   }
 </script>
