@@ -644,16 +644,16 @@
           <a class="btn btn-ghost" href="#tarifs">Voir les tarifs</a>
         </div>
         <ul class="reassurance-list">
-          <li><span class="check">✓</span> Maquette personnalisée sous 7 jours ouvrés</li>
-          <li><span class="check">✓</span> Réponse sous 48h</li>
-          <li><span class="check">✓</span> Sans carte bancaire ni engagement</li>
+          <li><span class="check" aria-hidden="true">✓</span> Maquette personnalisée sous 7 jours ouvrés</li>
+          <li><span class="check" aria-hidden="true">✓</span> Réponse sous 48h</li>
+          <li><span class="check" aria-hidden="true">✓</span> Sans carte bancaire ni engagement</li>
         </ul>
       </div>
       <div class="hero-visual">
         <div class="hero-photo-frame">
           <img class="hero-photo" src="hero.webp" alt="David Heurtebise à son poste de travail" width="1000" height="1091" fetchpriority="high">
           <div class="hero-badge">
-            <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true" focusable="false">
               <circle cx="17" cy="17" r="15" stroke="#B23A2E" stroke-width="1.4" stroke-dasharray="3 5"/>
               <circle cx="17" cy="17" r="3" fill="#B23A2E"/>
             </svg>
@@ -682,15 +682,15 @@
         <p style="color: var(--charcoal); font-size: 17px; max-width: 46ch;">Un site qui ne s'affiche pas bien sur mobile, une photo floue en page d'accueil, des horaires qui ne sont plus à jour... Ce sont souvent les premières impressions que vos clients potentiels retiennent — avant même de vous appeler.</p>
         <div class="probleme-list">
           <div class="probleme-item">
-            <span class="mark">—</span>
+            <span class="mark" aria-hidden="true">—</span>
             <p><strong>Illisible sur mobile</strong>Plus de 6 visiteurs sur 10 arrivent depuis leur téléphone.</p>
           </div>
           <div class="probleme-item">
-            <span class="mark">—</span>
+            <span class="mark" aria-hidden="true">—</span>
             <p><strong>Informations dépassées</strong>Horaires, tarifs ou services qui ne correspondent plus à la réalité.</p>
           </div>
           <div class="probleme-item">
-            <span class="mark">—</span>
+            <span class="mark" aria-hidden="true">—</span>
             <p><strong>Personne à contacter</strong>Un formulaire qui ne mène nulle part, ou une agence injoignable.</p>
           </div>
         </div>
@@ -785,10 +785,10 @@
       <div class="section-label">Mes engagements</div>
       <h2 class="section-title">Pas encore d'avis clients affichés — mais des engagements clairs, dès le premier jour.</h2>
       <ul class="engagements-list">
-        <li><span class="check">✓</span> Un seul interlocuteur, du premier échange à la maintenance</li>
-        <li><span class="check">✓</span> Modifications traitées sous 7 jours ouvrés, par SMS ou email</li>
-        <li><span class="check">✓</span> Aucun engagement de durée — vous partez quand vous voulez</li>
-        <li><span class="check">✓</span> Tarif annoncé dès le départ, sans frais cachés</li>
+        <li><span class="check" aria-hidden="true">✓</span> Un seul interlocuteur, du premier échange à la maintenance</li>
+        <li><span class="check" aria-hidden="true">✓</span> Modifications traitées sous 7 jours ouvrés, par SMS ou email</li>
+        <li><span class="check" aria-hidden="true">✓</span> Aucun engagement de durée — vous partez quand vous voulez</li>
+        <li><span class="check" aria-hidden="true">✓</span> Tarif annoncé dès le départ, sans frais cachés</li>
       </ul>
     </div>
   </section>
@@ -812,14 +812,14 @@
             <span class="price-value">100 €<span class="price-unit">/mois</span></span>
           </div>
           <ul class="inclus-list">
-            <li><span class="check">✓</span> Hébergement</li>
-            <li><span class="check">✓</span> Nom de domaine</li>
-            <li><span class="check">✓</span> Adresse email professionnelle</li>
-            <li><span class="check">✓</span> Maintenance technique et mises à jour</li>
-            <li><span class="check">✓</span> Sauvegardes régulières</li>
-            <li><span class="check">✓</span> 1h de modification de contenu par mois</li>
-            <li><span class="check">✓</span> Assistance directe, réponse sous 48h</li>
-            <li><span class="check">✓</span> Structure optimisée pour le référencement de base</li>
+            <li><span class="check" aria-hidden="true">✓</span> Hébergement</li>
+            <li><span class="check" aria-hidden="true">✓</span> Nom de domaine</li>
+            <li><span class="check" aria-hidden="true">✓</span> Adresse email professionnelle</li>
+            <li><span class="check" aria-hidden="true">✓</span> Maintenance technique et mises à jour</li>
+            <li><span class="check" aria-hidden="true">✓</span> Sauvegardes régulières</li>
+            <li><span class="check" aria-hidden="true">✓</span> 1h de modification de contenu par mois</li>
+            <li><span class="check" aria-hidden="true">✓</span> Assistance directe, réponse sous 48h</li>
+            <li><span class="check" aria-hidden="true">✓</span> Structure optimisée pour le référencement de base</li>
           </ul>
           <p style="font-size:13px; color: var(--charcoal); opacity:0.75; margin-top:14px; margin-bottom:0;">La modification mensuelle correspond à environ 1h de mon temps (texte, photos, tarifs, horaires...) — hors coût d'éventuels outils ou services tiers nécessaires.</p>
         </div>
@@ -848,19 +848,19 @@
           <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
           <div class="field">
             <label for="nom">Votre nom &amp; prénom</label>
-            <input id="nom" type="text" name="nom" required placeholder="ex. Jean Dupont">
+            <input id="nom" type="text" name="nom" required autocomplete="name" placeholder="ex. Jean Dupont">
           </div>
           <div class="field">
             <label for="entreprise">Nom de votre entreprise / activité</label>
-            <input id="entreprise" type="text" name="entreprise" required placeholder="ex. Menuiserie Dupont à Dinan">
+            <input id="entreprise" type="text" name="entreprise" required autocomplete="organization" placeholder="ex. Menuiserie Dupont à Dinan">
           </div>
           <div class="field">
             <label for="contact-info">Email ou téléphone</label>
-            <input id="contact-info" type="text" name="contact-info" required placeholder="Pour vous envoyer la maquette">
+            <input id="contact-info" type="text" name="contact-info" required autocomplete="email" placeholder="Pour vous envoyer la maquette">
           </div>
           <div class="field">
             <label for="site">Avez-vous déjà un site web actuellement ? (optionnel)</label>
-            <input id="site" type="url" name="site" placeholder="www.votre-site-actuel.fr">
+            <input id="site" type="text" inputmode="url" name="site" autocomplete="url" autocapitalize="off" spellcheck="false" placeholder="www.votre-site-actuel.fr">
           </div>
           <div class="submit-row">
             <label style="display:flex; align-items:flex-start; gap:8px; font-size:14px; color: var(--teal); margin-bottom: 16px;">
