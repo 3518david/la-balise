@@ -73,10 +73,10 @@
     seaClip.rect(0, 0, VB_W, VB_H);
     seaClip.addPath(land);
 
-    var WAKE_LIFE = 1700;   // ms avant qu'un point du sillage disparaisse
-    var SPREAD = 0.02;      // vitesse d'ouverture du V (unités SVG par ms)
-    var RING_LIFE = 1500;
-    var points = [];        // {x, y, nx, ny, t, gap}
+    var WAKE_LIFE = 2400;   // ms avant qu'un point du sillage disparaisse
+    var SPREAD = 0.03;      // vitesse d'ouverture du V (unités SVG par ms)
+    var RING_LIFE = 1800;
+    var points = [];        // {x, y, nx, ny, t, gap, seed}
     var rings = [];         // {x, y, t}
     var last = null;
     var scale = 1, dpr = 1, running = false;
@@ -111,12 +111,12 @@
       if (last) {
         var dx = p.x - last.x, dy = p.y - last.y, d = Math.sqrt(dx * dx + dy * dy);
         if (d < 4) return;
-        points.push({ x: p.x, y: p.y, nx: -dy / d, ny: dx / d, t: now, gap: false });
+        points.push({ x: p.x, y: p.y, nx: -dy / d, ny: dx / d, t: now, gap: false, seed: Math.random() * 6.28 });
       } else {
-        points.push({ x: p.x, y: p.y, nx: 0, ny: 0, t: now, gap: true });
+        points.push({ x: p.x, y: p.y, nx: 0, ny: 0, t: now, gap: true, seed: 0 });
       }
       last = p;
-      if (points.length > 160) points.shift();
+      if (points.length > 200) points.shift();
       start();
     });
     sea.addEventListener('pointerleave', function () { last = null; });
@@ -131,6 +131,23 @@
       if (!running) { running = true; requestAnimationFrame(frame); }
     }
 
+    // Position d'un point sur un bras du V : il s'écarte de la trajectoire en
+    // vieillissant, avec une légère ondulation pour que la ligne « vive ».
+    function armPoint(p, ref, side, age, shift) {
+      var nx = p.nx || ref.nx, ny = p.ny || ref.ny;
+      var off = side * (age * SPREAD + Math.sin(age * 0.006 + p.seed) * 1.6) + side * shift;
+      return [p.x + nx * off, p.y + ny * off];
+    }
+
+    function strokeSeg(a, b, color, width) {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.beginPath();
+      ctx.moveTo(a[0], a[1]);
+      ctx.lineTo(b[0], b[1]);
+      ctx.stroke();
+    }
+
     function frame(now) {
       while (points.length && now - points[0].t > WAKE_LIFE) points.shift();
       while (rings.length && now - rings[0].t > RING_LIFE) rings.shift();
@@ -141,45 +158,46 @@
       ctx.save();
       ctx.clip(seaClip, 'evenodd'); // le sillage s'arrête net au trait de côte
       ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
 
-      // Les deux bras du V : chaque point s'écarte de la trajectoire en vieillissant.
-      [-1, 1].forEach(function (side) {
-        for (var i = 1; i < points.length; i++) {
-          var a = points[i - 1], b = points[i];
-          if (b.gap) continue;
-          var ageA = now - a.t, ageB = now - b.t;
-          var life = 1 - ageB / WAKE_LIFE;
-          ctx.strokeStyle = 'rgba(20,107,114,' + (0.7 * life * life).toFixed(3) + ')';
-          ctx.lineWidth = 1.6;
-          ctx.beginPath();
-          ctx.moveTo(a.x + side * (a.nx || b.nx) * ageA * SPREAD, a.y + side * (a.ny || b.ny) * ageA * SPREAD);
-          ctx.lineTo(b.x + side * b.nx * ageB * SPREAD, b.y + side * b.ny * ageB * SPREAD);
-          ctx.stroke();
+      for (var i = 1; i < points.length; i++) {
+        var a = points[i - 1], b = points[i];
+        if (b.gap) continue;
+        var ageA = now - a.t, ageB = now - b.t;
+        var life = 1 - ageB / WAKE_LIFE;         // 1 → 0
+        var fade = life * life;
+
+        // Bras du V en relief : un creux sombre côté extérieur, une crête claire.
+        for (var side = -1; side <= 1; side += 2) {
+          strokeSeg(armPoint(a, b, side, ageA, 2.2), armPoint(b, b, side, ageB, 2.2),
+            'rgba(20,90,98,' + (0.3 * fade).toFixed(3) + ')', 3.4);
+          strokeSeg(armPoint(a, b, side, ageA, 0), armPoint(b, b, side, ageB, 0),
+            'rgba(255,255,255,' + (0.75 * fade).toFixed(3) + ')', 2.6);
         }
-      });
 
-      // L'écume au centre du sillon, qui se referme plus vite.
-      for (var j = 1; j < points.length; j++) {
-        var p0 = points[j - 1], p1 = points[j];
-        if (p1.gap) continue;
-        var foam = 1 - (now - p1.t) / (WAKE_LIFE * 0.55);
-        if (foam <= 0) continue;
-        ctx.strokeStyle = 'rgba(255,255,255,' + (0.85 * foam).toFixed(3) + ')';
-        ctx.lineWidth = 3.2 * foam + 0.6;
-        ctx.beginPath();
-        ctx.moveTo(p0.x, p0.y);
-        ctx.lineTo(p1.x, p1.y);
-        ctx.stroke();
+        // Traînée d'écume : large et diffuse, elle s'élargit et se dissipe.
+        var spread = 3 + ageB * 0.006;
+        strokeSeg([a.x, a.y], [b.x, b.y], 'rgba(255,255,255,' + (0.24 * fade).toFixed(3) + ')', spread * 1.5);
+        var core = 1 - ageB / (WAKE_LIFE * 0.5);
+        if (core > 0) {
+          strokeSeg([a.x, a.y], [b.x, b.y], 'rgba(255,255,255,' + (0.75 * core * core).toFixed(3) + ')', 2 + 2.5 * core);
+        }
       }
 
-      // Ronds dans l'eau (tap ou clic).
+      // Ronds dans l'eau (tap ou clic) : trois vaguelettes qui s'élargissent.
       rings.forEach(function (r) {
         var age = now - r.t, k = 1 - age / RING_LIFE;
-        for (var n = 0; n < 2; n++) {
-          var radius = age * 0.035 - n * 9;
+        for (var n = 0; n < 3; n++) {
+          var radius = age * 0.03 - n * 8;
           if (radius <= 0) continue;
-          ctx.strokeStyle = 'rgba(20,107,114,' + (0.45 * k * k).toFixed(3) + ')';
-          ctx.lineWidth = 1.2;
+          var alpha = k * k * (1 - n * 0.25);
+          ctx.strokeStyle = 'rgba(20,90,98,' + (0.25 * alpha).toFixed(3) + ')';
+          ctx.lineWidth = 3;
+          ctx.beginPath();
+          ctx.ellipse(r.x, r.y + 1.5, radius, radius * 0.6, 0, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.strokeStyle = 'rgba(255,255,255,' + (0.7 * alpha).toFixed(3) + ')';
+          ctx.lineWidth = 2;
           ctx.beginPath();
           ctx.ellipse(r.x, r.y, radius, radius * 0.6, 0, 0, Math.PI * 2);
           ctx.stroke();

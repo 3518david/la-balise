@@ -324,26 +324,34 @@ h2.section-title {
   height: 100%;
   display: block;
 }
-.sea-wake { pointer-events: none; }
+/* Flou léger : les lignes du sillage se fondent dans l'eau au lieu d'être tracées au trait */
+.sea-wake { pointer-events: none; filter: blur(1.3px); }
 .sea-svg text { font-family: var(--serif); }
 
-/* Va-et-vient de la marée : les isobathes glissent vers le large puis
-   reviennent, chacune avec son amplitude et son décalage ; l'écume du
-   rivage monte sur l'estran et se retire. */
-.tide { animation: tide 9s ease-in-out infinite alternate; }
-.tide-2 { animation-duration: 10s; animation-delay: -2s; }
-.tide-3 { animation-duration: 11s; animation-delay: -4s; }
-.tide-4 { animation-duration: 12s; animation-delay: -6s; }
-@keyframes tide {
-  from { transform: translate(-3px, -3px); }
-  to   { transform: translate(5px, 5px); }
+/* Va-et-vient de la marée : la nappe d'eau (.tide-water) se retire vers le
+   large en découvrant l'estran (sable mouillé), puis remonte jusqu'au trait
+   de côte ; l'écume suit la ligne d'eau. Les isobathes respirent avec elle,
+   chacune avec son amplitude et son décalage. */
+.tide-water { animation: ebb 11s ease-in-out infinite alternate; }
+@keyframes ebb {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(15px, 14px); }
 }
-.foam { animation: foam 9s ease-in-out infinite alternate; }
+.foam { animation: foam 11s ease-in-out infinite alternate; }
 @keyframes foam {
-  from { transform: translate(-2px, -2px); opacity: 0.85; }
-  to   { transform: translate(7px, 7px); opacity: 0.25; }
+  from { opacity: 0.95; }
+  to   { opacity: 0.45; }
+}
+.tide { animation: tide 11s ease-in-out infinite alternate; }
+.tide-2 { animation-duration: 12s; animation-delay: -2s; }
+.tide-3 { animation-duration: 13s; animation-delay: -4s; }
+.tide-4 { animation-duration: 14s; animation-delay: -6s; }
+@keyframes tide {
+  from { transform: translate(-4px, -4px); }
+  to   { transform: translate(10px, 9px); }
 }
 .hero-chart.is-paused .tide,
+.hero-chart.is-paused .tide-water,
 .hero-chart.is-paused .foam { animation-play-state: paused; }
 
 .photo-cartouche {
