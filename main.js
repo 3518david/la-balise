@@ -14,7 +14,9 @@
       { selector: '.waypoint', stagger: 110 },
       { selector: '.engagements-list li', stagger: 90 },
       { selector: '.price-block', stagger: 0 },
-      { selector: '.exemple .browser-frame', stagger: 0 },
+      { selector: '.exemple-block > .browser-frame', stagger: 0 },
+      // sur le <li> et non sur le cadre : le style inline écraserait le lift au survol
+      { selector: '.teaser-grid li', stagger: 90 },
       { selector: '.faq-list details', stagger: 60 },
       { selector: '.contact-grid > *', stagger: 100 }
     ];

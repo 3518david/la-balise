@@ -468,6 +468,51 @@ h2.section-title {
 .exemple-caption { margin-top: 14px; font-size: 15px; }
 .exemple-caption a { color: var(--teal); }
 
+/* Aperçu des démos sur l'accueil : trois vignettes, le détail est sur /exemples */
+.teaser-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 28px 0 0; padding: 0; list-style: none; }
+.teaser { display: block; text-decoration: none; color: var(--ink); }
+.teaser .browser-frame { display: block; margin: 0; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.teaser:hover .browser-frame { transform: translateY(-3px); box-shadow: 0 30px 50px -32px rgba(27,42,56,0.5); }
+.teaser .browser-bar { padding: 8px 12px; }
+.teaser-name { display: block; margin-top: 14px; font-family: var(--serif); font-weight: 600; font-size: 20px; }
+.teaser:hover .teaser-name { color: var(--teal); }
+.teaser .chart-note { display: block; font-size: 15px; }
+.teaser-actions .chart-note a { color: var(--teal); }
+.teaser-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 32px; }
+
+/* ---------- Page « Ce site pourrait être le vôtre » (/exemples) ---------- */
+.demos-intro { padding: 64px 0 40px; }
+.demos-crumb { margin: 0 0 28px; font-size: 15px; }
+.demos-crumb a { color: var(--teal); }
+.demos-title { font-size: 44px; line-height: 1.12; max-width: 20ch; margin: 0; }
+.demos-title em { font-weight: 400; color: var(--teal); }
+.demos-honest { display: flex; gap: 10px; align-items: baseline; max-width: 62ch; margin: 22px 0 0; font-size: 15px; color: var(--muted); }
+.demos-honest .fix { position: relative; top: 2px; }
+.demos-list { padding: 24px 0 96px; }
+.demo-row { display: grid; grid-template-columns: 1.25fr 1fr; gap: 48px; align-items: center; }
+.demo-row + .demo-row { margin-top: 88px; }
+.demo-row-alt .demo-shot { order: 2; }
+.demo-shot { display: block; text-decoration: none; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.demo-shot:hover { transform: translateY(-4px); box-shadow: 0 40px 60px -36px rgba(27,42,56,0.55); }
+.demo-shot .browser-bar { display: flex; }
+.demo-card { padding: 34px 34px 30px; }
+.demo-card .chart-note { margin: 0 0 6px; font-size: 16px; }
+.demo-card h2 { font-size: 32px; line-height: 1.15; margin: 0; }
+.demo-pitch { margin: 14px 0 0; }
+.demo-points { display: grid; gap: 10px; margin: 20px 0 0; }
+.demo-points li { align-items: baseline; }
+.demo-points .fix { position: relative; top: 2px; }
+.demo-for { margin: 18px 0 22px; font-size: 14px; color: var(--sonde); }
+.demo-for strong { color: var(--ink); font-weight: 600; }
+.demos-real-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: center; }
+.demos-real .browser-frame { display: block; text-decoration: none; }
+.demos-cta { padding-top: 0; }
+.demos-cta-box { display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px; align-items: center; padding: 44px 44px 40px; }
+.demos-cta-box .chart-note { margin: 0 0 8px; font-size: 17px; }
+.demos-cta-box h2 { font-size: 30px; line-height: 1.2; margin: 0 0 12px; }
+.demos-cta-box p { margin: 0; }
+.demos-cta-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+
 /* ---------- Tarifs ---------- */
 .tarifs { border-top: 1px solid var(--line); }
 .price-block { padding: 36px 40px 30px; }
@@ -637,6 +682,9 @@ form { display: flex; flex-direction: column; gap: 16px; }
 @media (max-width: 960px) {
   .split { grid-template-columns: 1fr; gap: 32px; }
   .split-head { position: static; }
+  .demo-row, .demos-real-grid, .demos-cta-box { grid-template-columns: 1fr; gap: 28px; }
+  .demo-row-alt .demo-shot { order: 0; }
+  .demo-row + .demo-row { margin-top: 64px; }
   /* Route verticale : pointillés à gauche, points alignés sur la marge */
   .route { grid-template-columns: 1fr; gap: 36px; margin-top: 36px; }
   /* Un tronçon pointillé par étape, jusqu'au point suivant : la route s'arrête au dernier point */
@@ -683,6 +731,13 @@ form { display: flex; flex-direction: column; gap: 16px; }
   .engagements-list { padding: 6px 20px; }
   .contact-grid { grid-template-columns: 1fr; gap: 32px; }
   .site-footer .footer-row { flex-direction: column; }
+  .teaser-grid { grid-template-columns: 1fr; gap: 28px; }
+  .demos-intro { padding: 40px 0 24px; }
+  .demos-title { font-size: 30px; }
+  .demo-card { padding: 26px 22px 24px; }
+  .demo-card h2 { font-size: 26px; }
+  .demos-cta-box { padding: 30px 22px 26px; }
+  .demos-cta-box h2 { font-size: 24px; }
   .legal { padding: 40px 20px 64px; }
 }
 
