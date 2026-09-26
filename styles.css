@@ -468,77 +468,6 @@ h2.section-title {
 .exemple-caption { margin-top: 14px; font-size: 15px; }
 .exemple-caption a { color: var(--teal); }
 
-/* Comparateur avant/après : un <input type=range> transparent couvre
-   l'image — clavier, souris et tactile gratuits, accessible nativement. */
-.ba {
-  --pos: 50%;
-  position: relative;
-  aspect-ratio: 1200 / 750;
-  overflow: hidden;
-  background: var(--paper-soft);
-  user-select: none;
-}
-.ba img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
-}
-.ba-before { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
-.ba-handle {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: var(--pos);
-  width: 2px;
-  margin-left: -1px;
-  background: #fff;
-  box-shadow: 0 0 0 1px rgba(27,42,56,0.25);
-  pointer-events: none;
-}
-.ba-handle::after {
-  content: '⇆';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 44px;
-  height: 44px;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: var(--ink);
-  color: var(--paper-soft);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  box-shadow: 0 8px 20px -6px rgba(27,42,56,0.5);
-}
-.ba-tag {
-  position: absolute;
-  top: 14px;
-  padding: 4px 10px;
-  border-radius: 2px;
-  font-size: 13px;
-  font-weight: 600;
-  background: rgba(27,42,56,0.85);
-  color: var(--paper-soft);
-  pointer-events: none;
-}
-.ba-tag-before { left: 14px; }
-.ba-tag-after { right: 14px; }
-.ba-range {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  opacity: 0;
-  cursor: ew-resize;
-}
-.ba:has(.ba-range:focus-visible) { outline: 2px solid var(--tan-deep); outline-offset: 3px; }
-
 /* ---------- Tarifs ---------- */
 .tarifs { border-top: 1px solid var(--line); }
 .price-block { padding: 36px 40px 30px; }
@@ -753,7 +682,6 @@ form { display: flex; flex-direction: column; gap: 16px; }
   .price-value { font-size: 28px; }
   .engagements-list { padding: 6px 20px; }
   .contact-grid { grid-template-columns: 1fr; gap: 32px; }
-  .ba-handle::after { width: 38px; height: 38px; font-size: 17px; }
   .site-footer .footer-row { flex-direction: column; }
   .legal { padding: 40px 20px 64px; }
 }

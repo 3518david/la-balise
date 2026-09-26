@@ -40,15 +40,6 @@
     });
   }
 
-  // Comparateur avant/après : le range pilote la variable CSS --pos.
-  document.querySelectorAll('[data-ba]').forEach(function (ba) {
-    var range = ba.querySelector('.ba-range');
-    if (!range) return;
-    var update = function () { ba.style.setProperty('--pos', range.value + '%'); };
-    range.addEventListener('input', update);
-    update();
-  });
-
   // Carte du hero : la marée (animation CSS) est mise en pause hors écran,
   // et la souris trace un sillage sur la mer (canvas par-dessus le SVG).
   var heroChart = document.querySelector('[data-hero-chart]');
