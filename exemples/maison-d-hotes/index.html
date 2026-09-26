@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Maison des Hautes-Eaux — chambres d'hôtes au bord de la Rance (démo La Balise)</title>
+<meta name="description" content="Site de démonstration réalisé par La Balise : une maison d'hôtes fictive au bord de la Rance, avec ses chambres, un calendrier de disponibilités et la réservation en direct.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F6F1E8">
+<link rel="icon" href="/exemples/maison-d-hotes/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/exemples/maison-d-hotes/fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/exemples/maison-d-hotes/fonts/hanken.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/exemples/maison-d-hotes/maison.css">
+<script src="/exemples/maison-d-hotes/maison.js" defer></script>
+</head>
+<body>
+
+<div class="demo-bar">
+  <p><strong>Site de démonstration.</strong> <span class="demo-long">La Maison des Hautes-Eaux est une maison d'hôtes fictive, imaginée par La Balise.</span></p>
+  <a href="https://www.labalise-html.fr/#contact">Ce site pourrait être le vôtre&nbsp;→</a>
+</div>
+
+<header class="top" data-top>
+  <div class="wrap top-inner">
+    <a class="brand" href="#accueil" aria-label="La Maison des Hautes-Eaux — accueil">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="31" fill="#24566B"/>
+        <path d="M14 38 L32 22 L50 38" fill="none" stroke="#F6F1E8" stroke-width="3" stroke-linejoin="round"/>
+        <rect x="21" y="36" width="22" height="3" fill="#F6F1E8"/>
+        <path d="M12 46 Q20 42 28 46 T44 46 T56 46" fill="none" stroke="#F2C08A" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M12 52 Q20 48 28 52 T44 52 T56 52" fill="none" stroke="#F2C08A" stroke-width="2.4" stroke-linecap="round" opacity=".6"/>
+      </svg>
+      <span class="brand-name">La Maison <em>des Hautes-Eaux</em></span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#chambres">Les chambres</a>
+      <a href="#disponibilites">Disponibilités</a>
+      <a href="#alentours">Autour de nous</a>
+      <a href="#infos">Infos pratiques</a>
+    </nav>
+    <a class="btn btn-primary top-cta" href="#disponibilites">Réserver <span class="badge">−10&nbsp;%</span></a>
+  </div>
+</header>
+
+<main id="accueil">
+
+  <!-- HERO : l'estuaire au soleil couchant -->
+  <section class="hero" aria-labelledby="hero-title">
+    <svg class="scene" viewBox="0 0 1440 800" preserveAspectRatio="xMaxYMax slice" aria-hidden="true">
+      <defs>
+        <radialGradient id="sun-glow">
+          <stop offset="0" stop-color="#FBE3C3" stop-opacity=".95"/>
+          <stop offset="1" stop-color="#FBE3C3" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#E8D9C9"/>
+          <stop offset=".35" stop-color="#9DBAC6"/>
+          <stop offset="1" stop-color="#6E95A6"/>
+        </linearGradient>
+        <linearGradient id="glint" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#FFF2DE" stop-opacity=".9"/>
+          <stop offset="1" stop-color="#FFF2DE" stop-opacity="0"/>
+        </linearGradient>
+        <radialGradient id="window-glow">
+          <stop offset="0" stop-color="#FFD58F" stop-opacity=".75"/>
+          <stop offset="1" stop-color="#FFD58F" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <g class="layer" data-depth="0.05">
+        <circle cx="1030" cy="455" r="190" fill="url(#sun-glow)"/>
+        <circle cx="1030" cy="455" r="58" fill="#F9D2A6"/>
+      </g>
+      <g class="clouds">
+        <ellipse cx="960" cy="330" rx="160" ry="12" fill="#FFFFFF" opacity=".45"/>
+        <ellipse cx="1050" cy="346" rx="100" ry="8" fill="#FFFFFF" opacity=".35"/>
+        <ellipse cx="1290" cy="290" rx="140" ry="11" fill="#FFFFFF" opacity=".4"/>
+      </g>
+
+      <!-- rive opposée -->
+      <g class="layer" data-depth="0.12">
+        <path d="M0 470 C120 440 240 452 360 438 C480 424 600 450 720 446 C860 440 940 462 1080 456 C1220 450 1330 468 1440 460 V560 H0 Z" fill="#A3B6C2"/>
+        <path d="M0 505 C140 486 260 494 400 482 C540 470 640 492 780 488 C920 484 1040 500 1180 496 C1300 492 1380 504 1440 500 V580 H0 Z" fill="#8199A8"/>
+        <!-- village et clocher -->
+        <g fill="#6F8797" transform="translate(360 6)">
+          <rect x="300" y="468" width="26" height="18"/><path d="M298 468 L313 458 L328 468Z"/>
+          <rect x="332" y="472" width="30" height="14"/><path d="M330 472 L347 462 L364 472Z"/>
+          <rect x="370" y="446" width="12" height="40"/><path d="M368 446 L376 424 L384 446Z"/>
+          <rect x="388" y="474" width="24" height="12"/><path d="M386 474 L400 465 L414 474Z"/>
+        </g>
+      </g>
+
+      <!-- la Rance -->
+      <g class="layer" data-depth="0.2">
+        <rect x="0" y="540" width="1440" height="230" fill="url(#water)"/>
+        <path d="M1018 546 C1030 580 1034 620 1030 660 L1006 660 C1004 620 1008 580 1018 546 Z" fill="url(#glint)" opacity=".45"/>
+        <g class="ripples" stroke="#F6EEE3" stroke-linecap="round" fill="none">
+          <path d="M80 575 H260 M420 590 H560 M700 572 H820 M960 600 H1120 M1210 582 H1330" stroke-width="2" opacity=".6"/>
+          <path d="M160 620 H360 M520 640 H700 M860 626 H1000 M1140 650 H1300" stroke-width="1.6" opacity=".45"/>
+        </g>
+        <g class="boat">
+          <path d="M-22 0 H22 L16 8 H-16 Z" fill="#35495A"/>
+          <path d="M0 -2 V-52" stroke="#35495A" stroke-width="2"/>
+          <path d="M2 -50 L26 -6 H2 Z" fill="#FBF6EE"/>
+          <path d="M-2 -44 L-20 -6 H-2 Z" fill="#E7B28E"/>
+        </g>
+      </g>
+
+      <!-- notre rive et la maison -->
+      <g class="layer" data-depth="0.32">
+        <path d="M520 800 C580 730 640 668 760 640 C860 616 960 598 1060 584 C1160 570 1260 560 1340 558 C1400 558 1430 560 1440 562 V800 Z" fill="#6C8B78"/>
+        <g class="house">
+          <!-- corps de la longère -->
+          <rect x="1080" y="470" width="300" height="112" fill="#DDD3C3"/>
+          <g fill="#CFC3B0">
+            <rect x="1090" y="552" width="28" height="12" rx="2"/><rect x="1124" y="540" width="22" height="10" rx="2"/>
+            <rect x="1292" y="556" width="30" height="12" rx="2"/><rect x="1336" y="532" width="24" height="10" rx="2"/>
+            <rect x="1184" y="492" width="26" height="10" rx="2"/>
+          </g>
+          <!-- toit d'ardoise -->
+          <path d="M1066 474 L1112 400 H1348 L1394 474 Z" fill="#4B5B67"/>
+          <path d="M1112 400 H1348" stroke="#3A4852" stroke-width="4"/>
+          <rect x="1136" y="370" width="22" height="36" fill="#CFC3B0"/><rect x="1132" y="366" width="30" height="8" fill="#B9AD99"/>
+          <rect x="1306" y="376" width="22" height="30" fill="#CFC3B0"/><rect x="1302" y="372" width="30" height="8" fill="#B9AD99"/>
+          <!-- lucarnes -->
+          <path d="M1190 474 V438 L1212 420 L1234 438 V474 Z" fill="#DDD3C3"/>
+          <path d="M1278 474 V438 L1300 420 L1322 438 V474 Z" fill="#DDD3C3"/>
+          <!-- fenêtres allumées -->
+          <g class="lit">
+            <circle cx="1212" cy="450" r="34" fill="url(#window-glow)"/>
+            <circle cx="1128" cy="520" r="40" fill="url(#window-glow)"/>
+            <circle cx="1328" cy="520" r="40" fill="url(#window-glow)"/>
+          </g>
+          <rect x="1200" y="440" width="24" height="26" fill="#FFD897"/>
+          <rect x="1288" y="440" width="24" height="26" fill="#9FB3BE"/>
+          <rect x="1112" y="500" width="32" height="38" fill="#FFD897"/>
+          <rect x="1312" y="500" width="32" height="38" fill="#FFD897"/>
+          <rect x="1170" y="500" width="32" height="38" fill="#9FB3BE"/>
+          <g stroke="#F6F1E8" stroke-width="3">
+            <path d="M1212 440 V466 M1200 453 H1224 M1300 440 V466 M1288 453 H1312"/>
+            <path d="M1128 500 V538 M1112 519 H1144 M1328 500 V538 M1312 519 H1344 M1186 500 V538 M1170 519 H1202"/>
+          </g>
+          <g fill="#3E6E8C"><rect x="1108" y="498" width="4" height="42"/><rect x="1144" y="498" width="4" height="42"/><rect x="1308" y="498" width="4" height="42"/><rect x="1344" y="498" width="4" height="42"/></g>
+          <!-- porte bleue -->
+          <path d="M1236 582 V520 Q1254 504 1272 520 V582 Z" fill="#3E6E8C"/>
+          <circle cx="1266" cy="552" r="2" fill="#F2C08A"/>
+          <!-- hortensias -->
+          <g class="hydrangeas">
+            <circle cx="1090" cy="582" r="18" fill="#8FA2DD"/><circle cx="1112" cy="588" r="15" fill="#A5B4E6"/><circle cx="1070" cy="592" r="13" fill="#7F93D2"/>
+            <circle cx="1212" cy="586" r="14" fill="#C895C4"/><circle cx="1226" cy="592" r="11" fill="#D6A8D0"/>
+            <circle cx="1300" cy="586" r="16" fill="#8FA2DD"/><circle cx="1322" cy="592" r="13" fill="#C895C4"/><circle cx="1366" cy="588" r="17" fill="#A5B4E6"/><circle cx="1390" cy="594" r="12" fill="#7F93D2"/>
+          </g>
+          <path d="M1040 606 C1120 596 1300 598 1440 606" stroke="#6A8374" stroke-width="10" fill="none"/>
+        </g>
+      </g>
+
+      <!-- premier plan -->
+      <g class="layer" data-depth="0.5">
+        <path d="M0 800 V700 C140 690 300 704 420 712 C520 718 600 740 660 800 Z" fill="#4F6B5B"/>
+        <g class="reeds" stroke="#4E6758" stroke-width="3" stroke-linecap="round" fill="none">
+          <path d="M60 720 Q64 680 58 640"/><path d="M80 724 Q90 688 92 654"/><path d="M104 726 Q102 690 112 668"/>
+          <path d="M470 736 Q476 700 470 668"/><path d="M492 740 Q500 710 506 684"/><path d="M516 744 Q514 716 524 698"/>
+        </g>
+      </g>
+
+      <!-- courlis -->
+      <g class="birds" fill="none" stroke="#3B4B57" stroke-width="2.2" stroke-linecap="round">
+        <path class="bird b1" d="M0 0 Q8 -8 16 0 Q24 -8 32 0 M30 0 Q34 4 40 10"/>
+        <path class="bird b2" d="M0 0 Q7 -7 14 0 Q21 -7 28 0 M26 0 Q30 4 35 9"/>
+        <path class="bird b3" d="M0 0 Q6 -6 12 0 Q18 -6 24 0 M22 0 Q25 3 29 7"/>
+      </g>
+    </svg>
+
+    <div class="wrap hero-copy">
+      <p class="eyebrow">Chambres d'hôtes · La Ville-ès-Nonais</p>
+      <h1 id="hero-title">Trois chambres <em>au bord de la Rance.</em></h1>
+      <p class="hero-lead">Une longère en granit, le jardin qui descend vers l'eau, et le petit-déjeuner face à la marée. À dix minutes de Saint-Suliac, vingt de Saint-Malo et de Dinan.</p>
+      <p class="hero-direct"><span class="badge badge-lg">−10&nbsp;%</span> en réservant ici plutôt que sur les plateformes</p>
+    </div>
+  </section>
+
+  <!-- RECHERCHE RAPIDE -->
+  <div class="wrap">
+    <form class="quick" data-quick aria-label="Rechercher une chambre libre">
+      <label class="q-field">
+        <span>Arrivée</span>
+        <input type="date" data-q-arrival required>
+      </label>
+      <label class="q-field">
+        <span>Nuits</span>
+        <select data-q-nights>
+          <option value="2">2 nuits</option><option value="3">3 nuits</option><option value="4">4 nuits</option><option value="5">5 nuits</option><option value="7">1 semaine</option>
+        </select>
+      </label>
+      <label class="q-field">
+        <span>Voyageurs</span>
+        <select data-q-guests>
+          <option value="1">1 personne</option><option value="2" selected>2 personnes</option><option value="3">3 personnes</option><option value="4">4 personnes</option>
+        </select>
+      </label>
+      <button type="submit" class="btn btn-primary q-btn">Voir les chambres libres</button>
+      <p class="q-result" data-q-result role="status"></p>
+    </form>
+  </div>
+
+  <!-- POURQUOI EN DIRECT -->
+  <section class="direct" aria-labelledby="direct-title">
+    <div class="wrap direct-grid">
+      <div>
+        <p class="kicker">Réserver en direct</p>
+        <h2 id="direct-title">Le meilleur prix <em>est ici.</em></h2>
+      </div>
+      <ul class="direct-list">
+        <li>
+          <strong>−10&nbsp;% par rapport aux plateformes</strong>
+          <span>Les sites de réservation prennent une commission sur chaque nuit. En passant par nous, on vous en rend une partie.</span>
+        </li>
+        <li>
+          <strong>Vous parlez à Anne et Loïc</strong>
+          <span>Une question sur la chambre, une arrivée tardive, un régime particulier au petit-déjeuner&nbsp;: on vous répond nous-mêmes, sous 24&nbsp;h.</span>
+        </li>
+        <li>
+          <strong>Un calendrier toujours à jour</strong>
+          <span>Nos disponibilités sont synchronisées avec les plateformes&nbsp;: une date libre ici est vraiment libre.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CHAMBRES -->
+  <section class="rooms" id="chambres" aria-labelledby="chambres-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Les chambres</p>
+        <h2 id="chambres-title">Chacune sa fenêtre <em>sur la Rance.</em></h2>
+        <p class="section-lead">Draps en lin, literie neuve, salle d'eau privative. Le petit-déjeuner est compris dans le prix.</p>
+      </div>
+
+      <div class="room-grid">
+        <article class="room reveal" data-room="estran">
+          <div class="room-window">
+            <svg viewBox="0 0 300 340" aria-hidden="true">
+              <defs><clipPath id="w-estran"><path d="M20 340 V120 A130 110 0 0 1 280 120 V340 Z"/></clipPath>
+                <linearGradient id="w-estran-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#BFD1DA"/><stop offset="1" stop-color="#F2E2D2"/></linearGradient></defs>
+              <g clip-path="url(#w-estran)">
+                <rect width="300" height="340" fill="url(#w-estran-sky)"/>
+                <path d="M0 170 C60 160 120 168 180 160 C230 154 270 160 300 158 V220 H0Z" fill="#9FB0BA"/>
+                <rect y="200" width="300" height="40" fill="#A7C0C9"/>
+                <path d="M0 232 C60 226 110 238 170 232 C220 226 260 236 300 230 V340 H0Z" fill="#B59F82"/>
+                <path d="M30 260 C80 254 120 262 180 256" stroke="#9E8A6E" stroke-width="3" fill="none"/>
+                <g transform="translate(92 250) rotate(-8)"><path d="M-26 0 H26 L20 10 H-20Z" fill="#E7B28E"/><path d="M-4 0 V-34" stroke="#35495A" stroke-width="2"/></g>
+                <g transform="translate(206 262) rotate(6)"><path d="M-20 0 H20 L15 8 H-15Z" fill="#35495A"/></g>
+                <path d="M0 300 H300 V340 H0Z" fill="#F6F1E8"/>
+                <path d="M200 300 C204 280 214 276 222 282 C226 270 240 272 238 286 C246 282 250 296 244 300Z" fill="#8FA2DD"/>
+              </g>
+              <path d="M20 340 V120 A130 110 0 0 1 280 120 V340" fill="none" stroke="#FFFDF8" stroke-width="14"/>
+              <path d="M150 12 V300 M20 200 H280" stroke="#FFFDF8" stroke-width="8"/>
+              <path d="M8 340 V300 H292 V340" fill="#E7DCCB"/>
+            </svg>
+            <span class="room-tag">Vue sur la Rance</span>
+          </div>
+          <div class="room-body">
+            <h3>L'Estran</h3>
+            <p>Au premier étage, la plus lumineuse. À marée basse, les bateaux se couchent sur la vase juste sous la fenêtre.</p>
+            <ul class="room-facts"><li>2 personnes</li><li>Lit 160</li><li>Salle d'eau</li><li>18&nbsp;m²</li></ul>
+          </div>
+          <div class="room-foot">
+            <p class="room-price">dès <strong>95&nbsp;€</strong> <span>/ nuit, petit-déj. compris</span></p>
+            <button type="button" class="btn btn-outline" data-pick-room="estran">Voir les dates</button>
+          </div>
+          <p class="room-avail" data-avail="estran" hidden></p>
+        </article>
+
+        <article class="room reveal" data-room="hortensias">
+          <div class="room-window">
+            <svg viewBox="0 0 300 340" aria-hidden="true">
+              <defs><clipPath id="w-hort"><rect x="20" y="20" width="260" height="320" rx="6"/></clipPath>
+                <linearGradient id="w-hort-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C9D8DF"/><stop offset="1" stop-color="#EEF0E6"/></linearGradient></defs>
+              <g clip-path="url(#w-hort)">
+                <rect width="300" height="340" fill="url(#w-hort-sky)"/>
+                <path d="M0 190 C80 176 170 184 300 176 V340 H0Z" fill="#9DB39A"/>
+                <path d="M0 236 C90 226 190 232 300 222 V340 H0Z" fill="#86A084"/>
+                <rect x="206" y="110" width="12" height="110" fill="#7A6250"/>
+                <circle cx="212" cy="104" r="52" fill="#6F8F6B"/><circle cx="182" cy="122" r="32" fill="#7E9D78"/><circle cx="242" cy="124" r="30" fill="#7E9D78"/>
+                <g fill="#E0664A"><circle cx="190" cy="100" r="5"/><circle cx="230" cy="92" r="5"/><circle cx="216" cy="130" r="5"/><circle cx="246" cy="116" r="4"/><circle cx="176" cy="128" r="4"/></g>
+                <g><circle cx="60" cy="262" r="30" fill="#8FA2DD"/><circle cx="96" cy="272" r="26" fill="#A5B4E6"/><circle cx="36" cy="282" r="22" fill="#7F93D2"/>
+                  <circle cx="170" cy="276" r="26" fill="#C895C4"/><circle cx="200" cy="284" r="22" fill="#D6A8D0"/><circle cx="252" cy="270" r="28" fill="#8FA2DD"/></g>
+                <path d="M20 300 H280 V340 H20Z" fill="#6E8C6A" opacity=".5"/>
+              </g>
+              <rect x="20" y="20" width="260" height="320" rx="6" fill="none" stroke="#FFFDF8" stroke-width="14"/>
+              <path d="M150 20 V340 M20 130 H280 M20 235 H280" stroke="#FFFDF8" stroke-width="7"/>
+            </svg>
+            <span class="room-tag">Terrasse privée</span>
+          </div>
+          <div class="room-body">
+            <h3>Les Hortensias</h3>
+            <p>De plain-pied sur le jardin, avec sa petite terrasse sous le pommier. Idéale pour ceux qui n'aiment pas les escaliers.</p>
+            <ul class="room-facts"><li>2 personnes</li><li>Lit 140 ou 2 × 90</li><li>Salle d'eau</li><li>Accessible</li></ul>
+          </div>
+          <div class="room-foot">
+            <p class="room-price">dès <strong>85&nbsp;€</strong> <span>/ nuit, petit-déj. compris</span></p>
+            <button type="button" class="btn btn-outline" data-pick-room="hortensias">Voir les dates</button>
+          </div>
+          <p class="room-avail" data-avail="hortensias" hidden></p>
+        </article>
+
+        <article class="room reveal" data-room="vigie">
+          <div class="room-window">
+            <svg viewBox="0 0 300 340" aria-hidden="true">
+              <defs><clipPath id="w-vigie"><circle cx="150" cy="170" r="128"/></clipPath>
+                <linearGradient id="w-vigie-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#AFC4D0"/><stop offset=".6" stop-color="#F5D9C0"/></linearGradient></defs>
+              <rect width="300" height="340" fill="#E7DCCB"/>
+              <g clip-path="url(#w-vigie)">
+                <rect width="300" height="340" fill="url(#w-vigie-sky)"/>
+                <circle cx="196" cy="176" r="22" fill="#F9D2A6"/>
+                <path d="M0 184 C60 176 120 182 180 176 C230 172 270 178 300 176 V230 H0Z" fill="#9FB0BA"/>
+                <rect y="198" width="300" height="100" fill="#A9C2CB"/>
+                <path d="M196 200 L206 200 L214 290 L178 290Z" fill="#FFF2DE" opacity=".5"/>
+                <g transform="translate(96 232)"><path d="M-16 0 H16 L12 6 H-12Z" fill="#35495A"/><path d="M0 -2 V-36" stroke="#35495A" stroke-width="1.6"/><path d="M1.5 -34 L18 -4 H1.5Z" fill="#FBF6EE"/></g>
+                <g transform="translate(236 252) scale(.7)"><path d="M-16 0 H16 L12 6 H-12Z" fill="#35495A"/><path d="M0 -2 V-36" stroke="#35495A" stroke-width="1.6"/><path d="M1.5 -34 L18 -4 H1.5Z" fill="#E7B28E"/></g>
+                <path d="M0 280 C80 270 200 276 300 268 V340 H0Z" fill="#7C9587"/>
+              </g>
+              <circle cx="150" cy="170" r="128" fill="none" stroke="#FFFDF8" stroke-width="14"/>
+              <circle cx="150" cy="170" r="142" fill="none" stroke="#CFC3B0" stroke-width="10" stroke-dasharray="26 6"/>
+              <path d="M150 42 V298 M22 170 H278" stroke="#FFFDF8" stroke-width="6"/>
+            </svg>
+            <span class="room-tag">Suite familiale</span>
+          </div>
+          <div class="room-body">
+            <h3>La Vigie</h3>
+            <p>Sous les toits, deux chambres qui communiquent et un œil-de-bœuf qui regarde tout l'estuaire. Les enfants se battent pour le lit près du hublot.</p>
+            <ul class="room-facts"><li>4 personnes</li><li>Lit 160 + 2 × 90</li><li>Salle de bain</li><li>32&nbsp;m²</li></ul>
+          </div>
+          <div class="room-foot">
+            <p class="room-price">dès <strong>140&nbsp;€</strong> <span>/ nuit, petit-déj. compris</span></p>
+            <button type="button" class="btn btn-outline" data-pick-room="vigie">Voir les dates</button>
+          </div>
+          <p class="room-avail" data-avail="vigie" hidden></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PETIT-DÉJEUNER -->
+  <section class="breakfast" aria-labelledby="pdj-title">
+    <div class="wrap breakfast-grid">
+      <svg class="breakfast-illu" viewBox="0 0 360 260" aria-hidden="true">
+        <ellipse cx="180" cy="200" rx="170" ry="44" fill="#DCC9AA"/>
+        <!-- bol -->
+        <path d="M56 150 H136 C134 184 112 200 96 200 C80 200 58 184 56 150Z" fill="#3E6E8C"/>
+        <ellipse cx="96" cy="150" rx="40" ry="9" fill="#C08A5A"/>
+        <path d="M70 162 C80 168 112 168 122 162" stroke="#F6F1E8" stroke-width="3" fill="none" stroke-dasharray="2 6" stroke-linecap="round"/>
+        <!-- vapeur -->
+        <g class="steam" stroke="#B9AD99" stroke-width="3" stroke-linecap="round" fill="none"><path d="M86 136 C80 124 92 118 86 104"/><path d="M104 134 C98 120 112 114 104 98"/></g>
+        <!-- assiette de crêpes -->
+        <ellipse cx="226" cy="190" rx="84" ry="20" fill="#FFFDF8" stroke="#E0D4C0" stroke-width="3"/>
+        <path d="M168 184 C180 160 272 160 284 184 C270 196 182 196 168 184Z" fill="#E4A860"/>
+        <path d="M176 178 C196 164 258 164 276 178" stroke="#C98A42" stroke-width="3" fill="none"/>
+        <path d="M184 172 C204 160 250 160 268 170" stroke="#F0C27E" stroke-width="3" fill="none"/>
+        <!-- pot de confiture -->
+        <rect x="286" y="118" width="46" height="60" rx="8" fill="#B64A3A"/>
+        <rect x="282" y="108" width="54" height="16" rx="4" fill="#F6F1E8"/>
+        <path d="M282 116 H336" stroke="#E07E6A" stroke-width="4" stroke-dasharray="6 6"/>
+        <rect x="294" y="138" width="30" height="20" rx="3" fill="#FFFDF8"/>
+        <!-- beurre -->
+        <rect x="140" y="206" width="44" height="22" rx="4" fill="#F7E3A1"/>
+        <path d="M140 212 H184" stroke="#E6CB7C" stroke-width="3"/>
+      </svg>
+      <div>
+        <p class="kicker">Le petit-déjeuner</p>
+        <h2 id="pdj-title">Servi jusqu'à 10&nbsp;h, <em>face à l'eau.</em></h2>
+        <blockquote class="pull">«&nbsp;Les crêpes sont faites le matin, la confiture en septembre, et le beurre est salé. Évidemment.&nbsp;»</blockquote>
+        <p class="section-lead">Pain de la boulangerie du bourg, œufs des poules du voisin, jus de pommes du pays. Dites-nous la veille si vous préférez sans gluten ou sans lactose.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISPONIBILITÉS -->
+  <section class="booking" id="disponibilites" aria-labelledby="dispo-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Disponibilités</p>
+        <h2 id="dispo-title">Choisissez vos dates, <em>on s'occupe du reste.</em></h2>
+        <p class="sync"><span class="sync-dot" aria-hidden="true"></span> Calendrier synchronisé avec Airbnb et Booking · mis à jour il y a <span data-sync-min>12</span>&nbsp;min <span class="sync-demo">(démo)</span></p>
+      </div>
+
+      <div class="room-tabs" role="group" aria-label="Choisir la chambre">
+        <button type="button" class="room-tab" data-tab="estran" aria-pressed="true">L'Estran</button>
+        <button type="button" class="room-tab" data-tab="hortensias" aria-pressed="false">Les Hortensias</button>
+        <button type="button" class="room-tab" data-tab="vigie" aria-pressed="false">La Vigie</button>
+      </div>
+
+      <div class="booking-grid">
+        <div class="cal-card">
+          <div class="cal-head">
+            <button type="button" class="cal-nav" data-cal-prev aria-label="Mois précédent">←</button>
+            <p class="cal-hint" data-cal-hint aria-live="polite">Choisissez votre date d'arrivée</p>
+            <button type="button" class="cal-nav" data-cal-next aria-label="Mois suivant">→</button>
+          </div>
+          <div class="cal-months" data-cal></div>
+          <ul class="cal-legend" aria-hidden="true">
+            <li><span class="lg lg-free"></span>Libre</li>
+            <li><span class="lg lg-taken"></span>Réservé</li>
+            <li><span class="lg lg-sel"></span>Votre séjour</li>
+            <li class="lg-note">2 nuits minimum</li>
+          </ul>
+        </div>
+
+        <aside class="summary" data-summary aria-live="polite">
+          <h3 data-sum-room>L'Estran</h3>
+          <p class="sum-dates" data-sum-dates>Aucune date choisie pour l'instant.</p>
+          <div class="sum-guests">
+            <label><span>Adultes</span>
+              <select data-adults><option>1</option><option selected>2</option><option>3</option><option>4</option></select>
+            </label>
+            <label><span>Enfants (−18 ans)</span>
+              <select data-children><option selected>0</option><option>1</option><option>2</option><option>3</option></select>
+            </label>
+          </div>
+          <p class="sum-cap" data-sum-cap role="alert"></p>
+          <dl class="sum-lines" data-sum-lines hidden>
+            <div><dt>Sur les plateformes</dt><dd class="strike" data-sum-platform></dd></div>
+            <div class="sum-direct"><dt>En direct, petit-déj. compris</dt><dd data-sum-direct></dd></div>
+            <div><dt>Taxe de séjour <small>(1&nbsp;€ / adulte / nuit, exemple)</small></dt><dd data-sum-tax></dd></div>
+            <div class="sum-total"><dt>Total</dt><dd data-sum-total></dd></div>
+          </dl>
+          <p class="sum-save" data-sum-save hidden></p>
+          <button type="button" class="btn btn-primary btn-block" data-sum-go disabled>Demander ces dates</button>
+          <p class="fine">Pas de paiement maintenant. Anne confirme sous 24&nbsp;h et vous envoie le lien pour l'acompte de 30&nbsp;%.</p>
+        </aside>
+      </div>
+
+      <form class="request" data-request hidden novalidate>
+        <h3>Vos coordonnées</h3>
+        <p class="request-recap" data-request-recap></p>
+        <div class="request-grid">
+          <label class="field"><span>Nom</span><input type="text" name="nom" autocomplete="name" required></label>
+          <label class="field"><span>E-mail</span><input type="email" name="email" autocomplete="email" required></label>
+          <label class="field"><span>Téléphone <small>(facultatif)</small></span><input type="tel" name="tel" autocomplete="tel"></label>
+          <label class="field field-wide"><span>Un mot pour nous <small>(facultatif)</small></span><textarea name="message" rows="3" placeholder="Heure d'arrivée, allergies, occasion particulière…"></textarea></label>
+        </div>
+        <p class="form-error" data-request-error role="alert"></p>
+        <div class="request-actions">
+          <button type="button" class="btn btn-ghost" data-request-back>← Modifier les dates</button>
+          <button type="submit" class="btn btn-primary">Envoyer ma demande</button>
+        </div>
+        <p class="fine">Démonstration&nbsp;: rien n'est envoyé ni enregistré.</p>
+      </form>
+
+      <div class="sent" data-sent hidden tabindex="-1">
+        <svg class="sent-illu" viewBox="0 0 120 80" aria-hidden="true">
+          <path class="sent-wave" d="M4 60 Q19 50 34 60 T64 60 T94 60 T116 60" fill="none" stroke="#24566B" stroke-width="3" stroke-linecap="round"/>
+          <g class="sent-boat"><path d="M40 52 H80 L74 60 H46Z" fill="#24566B"/><path d="M60 50 V16" stroke="#24566B" stroke-width="2.4"/><path d="M62 18 L82 48 H62Z" fill="#F2C08A"/><path d="M58 24 L44 48 H58Z" fill="#E7B28E"/></g>
+        </svg>
+        <h3>Demande envoyée, <em data-sent-name></em></h3>
+        <p data-sent-text></p>
+        <p class="fine">Ceci est une démonstration&nbsp;: aucune demande n'a été envoyée.</p>
+        <button type="button" class="btn btn-ghost" data-sent-reset>Faire une autre demande</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUTOUR DE NOUS -->
+  <section class="around" id="alentours" aria-labelledby="alentours-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Autour de nous</p>
+        <h2 id="alentours-title">Laissez la voiture <em>au moins un jour.</em></h2>
+      </div>
+      <div class="around-grid">
+        <div class="around-col reveal">
+          <p class="around-mode">À pied</p>
+          <ol class="around-list">
+            <li><strong>Le chemin de halage</strong><span>au bout du jardin</span></li>
+            <li><strong>Le GR34 en bord de Rance</strong><span>5&nbsp;min</span></li>
+            <li><strong>La boulangerie du bourg</strong><span>10&nbsp;min</span></li>
+          </ol>
+        </div>
+        <div class="around-col reveal">
+          <p class="around-mode">À vélo <small>(deux vélos prêtés)</small></p>
+          <ol class="around-list">
+            <li><strong>Saint-Suliac et son port</strong><span>env. 20&nbsp;min</span></li>
+            <li><strong>Les marchés du matin</strong><span>env. 20&nbsp;min</span></li>
+            <li><strong>Les pointes et les anses de la Rance</strong><span>à la demi-journée</span></li>
+          </ol>
+        </div>
+        <div class="around-col reveal">
+          <p class="around-mode">En voiture</p>
+          <ol class="around-list">
+            <li><strong>Saint-Malo, intra-muros</strong><span>env. 20&nbsp;min</span></li>
+            <li><strong>Dinan et ses remparts</strong><span>env. 20&nbsp;min</span></li>
+            <li><strong>Dinard et ses plages</strong><span>env. 25&nbsp;min</span></li>
+          </ol>
+        </div>
+      </div>
+      <p class="around-note">Au petit-déjeuner, Loïc vous donne les horaires de marée du jour&nbsp;: certaines balades ne se font qu'à marée basse.</p>
+    </div>
+  </section>
+
+  <!-- INFOS PRATIQUES -->
+  <section class="infos" id="infos" aria-labelledby="infos-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Infos pratiques</p>
+        <h2 id="infos-title">Tout ce qu'on nous <em>demande souvent.</em></h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Pourquoi est-ce moins cher en direct&nbsp;?</summary>
+          <p>Les plateformes de réservation prélèvent une commission sur chaque séjour. Quand vous réservez ici, cette commission n'existe pas&nbsp;: on en garde une partie et on vous rend l'autre, sous forme de 10&nbsp;% de réduction.</p>
+        </details>
+        <details>
+          <summary>Comment se passe le paiement&nbsp;?</summary>
+          <p>Vous envoyez une demande, nous la confirmons sous 24&nbsp;h. Un acompte de 30&nbsp;% bloque les dates (carte bancaire ou virement), le solde se règle à l'arrivée. Annulation sans frais jusqu'à 14&nbsp;jours avant l'arrivée.</p>
+        </details>
+        <details>
+          <summary>À quelle heure arrive-t-on&nbsp;?</summary>
+          <p>Arrivée entre 17&nbsp;h et 20&nbsp;h, départ avant 11&nbsp;h. Si vous arrivez plus tard, prévenez-nous&nbsp;: on laisse la clé dans une boîte à code.</p>
+        </details>
+        <details>
+          <summary>Les animaux sont-ils acceptés&nbsp;?</summary>
+          <p>Les chiens calmes sont les bienvenus dans la chambre Les Hortensias (10&nbsp;€ par séjour). Notre chat, lui, est déjà là.</p>
+        </details>
+        <details>
+          <summary>Et la taxe de séjour&nbsp;?</summary>
+          <p>Elle est reversée à la commune et s'ajoute au prix de la nuit, par adulte. Les moins de 18 ans en sont exonérés. Le montant affiché dans le calendrier est un exemple&nbsp;: il dépend de la commune.</p>
+        </details>
+      </div>
+      <ul class="legal-facts">
+        <li>Parking privé gratuit</li>
+        <li>Wi-Fi dans toute la maison</li>
+        <li>Maison non-fumeur</li>
+        <li>N° d'enregistrement&nbsp;: <span class="mono">35XXX 000000 XX</span> <small>(exemple&nbsp;: à afficher selon la commune)</small></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div>
+      <p class="brand-name brand-name-foot">La Maison <em>des Hautes-Eaux</em></p>
+      <p>Chambres d'hôtes au bord de la Rance<br>La Ville-ès-Nonais, Ille-et-Vilaine</p>
+    </div>
+    <div>
+      <p><a href="tel:+33261910077">02&nbsp;61&nbsp;91&nbsp;00&nbsp;77</a></p>
+      <p class="foot-small">Numéro de la plage réservée à la fiction&nbsp;: il ne sonne nulle part.</p>
+    </div>
+    <div class="foot-credit">
+      <p>Site de démonstration réalisé par</p>
+      <a href="https://www.labalise-html.fr/">La Balise&nbsp;— sites vitrines pour les commerces des bords de Rance&nbsp;→</a>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-book" data-sticky>
+  <a class="btn btn-primary btn-block" href="#disponibilites">Voir les disponibilités <span class="badge">−10&nbsp;%</span></a>
+</div>
+
+</body>
+</html>
